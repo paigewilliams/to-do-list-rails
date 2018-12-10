@@ -1,0 +1,20 @@
+<h1>Lists</h1>
+<ul>
+  <h4>Finished Lists:</h4>
+  <% @lists.each do |list| %>
+  <% if list.tasks.not_done.empty? & list.tasks.done.any? %>
+
+    <li><%= link_to list.name, list_path(list) %></li>
+    <% end %>
+    <% end %>
+    <h4>UnFinished Lists:</h4>
+    <% @lists.each do |list| %>
+    <% if list.tasks.done.empty? | list.tasks.not_done.any?  %>
+    <li><%= link_to list.name, list_path(list) %></li>
+    <% end %>
+  <% end %>
+</ul>
+
+<hr>
+
+<%= link_to "New List",  new_list_path %>
